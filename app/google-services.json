@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "892841852830",
+    "project_id": "icomunicator-f1a79",
+    "storage_bucket": "icomunicator-f1a79.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:892841852830:android:33bf7c5c46754cc23fe08f",
+        "android_client_info": {
+          "package_name": "com.redditizie.icomunicator"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCW74Gy7AsxzjI6SvXBwDlJpuDA5JnqoKw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
