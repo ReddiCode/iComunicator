@@ -39,33 +39,36 @@ android {
 
 dependencies {
 
-    //Dependências Firebase
-    implementation libs.firebase.bom
+// Firebase BoM (Bill of Materials)
+    implementation platform('com.google.firebase:firebase-bom:32.7.3')
 
-    //Firebase Analytics
-    implementation libs.firebase.analytics.ktx
+// Firebase Analytics
+    implementation 'com.google.firebase:firebase-analytics-ktx'
 
-    //Autenticação
-    implementation libs.firebase.auth.ktx
+// Autenticação
+    implementation 'com.google.firebase:firebase-auth-ktx'
 
-    //Banco de dados
-    implementation libs.firebase.firestore.ktx
+// Firestore
+    implementation 'com.google.firebase:firebase-firestore-ktx'
 
-    //Armazenamento
-    implementation libs.firebase.storage.ktx
+// Storage
+    implementation 'com.google.firebase:firebase-storage-ktx'
+
 
 
 
     // Dependecias picasso
 
-    implementation (libs.picasso)
+    implementation 'com.squareup.picasso:picasso:2.8'
 
-    implementation libs.androidx.core.ktx
-    implementation libs.androidx.appcompat
-    implementation libs.material
-    implementation libs.androidx.activity
-    implementation libs.androidx.constraintlayout
-    testImplementation libs.junit
-    androidTestImplementation libs.androidx.junit
-    androidTestImplementation libs.androidx.espresso.core
+
+    implementation 'androidx.core:core-ktx:1.12.0'
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.10.0'
+    implementation 'androidx.activity:activity-ktx:1.8.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+
 }
