@@ -30,7 +30,7 @@ class CadastroActivity : AppCompatActivity() {
         setSupportActionBar( toolbar )
         supportActionBar?.apply {
             title = "Faça o seu cadastro"
-            setDisplayHomeAsUpEnabled(true) // Exibi um botao voltar na tooltbar
+            setDisplayHomeAsUpEnabled(true) // Exibi um botao voltar na tooltbar. Configurar no manifest o nome da activity pai: android:parentActivityName=".LoginActivity"
         }
     }
 }
