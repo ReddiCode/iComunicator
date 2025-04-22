@@ -5,7 +5,15 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
 
         <item name="colorPrimary">@color/primaria</item>
+
+        <item name="actionOverflowButtonStyle">@style/ActionOverflowButton</item>  <!-- Adicionado style criado para o icone de tres pontinnhos -->
+
     </style>
 
+    <style name="ActionOverflowButton" parent="Widget.AppCompat.ActionButton.Overflow">
+    <item name="tint">@color/white</item>
+    </style>  <!-- Criado style (cor) para icone de tres pontinhos do menu-->
+
     <style name="Theme.IComunicator" parent="Base.Theme.IComunicator" />
+
 </resources>
