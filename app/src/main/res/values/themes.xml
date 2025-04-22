@@ -14,6 +14,10 @@
     <item name="tint">@color/white</item>
     </style>  <!-- Criado style (cor) para icone de tres pontinhos do menu-->
 
+    <style name="Circulo">
+        <item name="cornerSize">50%</item>
+    </style>
+
     <style name="Theme.IComunicator" parent="Base.Theme.IComunicator" />
 
 </resources>
