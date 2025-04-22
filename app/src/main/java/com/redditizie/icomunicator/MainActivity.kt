@@ -12,7 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.MenuProvider
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.tabs.TabLayoutMediator
 import com.google.firebase.auth.FirebaseAuth
+import com.redditizie.icomunicator.adapters.ViewPagerAdapter
 import com.redditizie.icomunicator.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -33,9 +35,30 @@ class MainActivity : AppCompatActivity() {
         setContentView( binding.root )
 
         inicializarToolbar()
+        inicializarNavegacaoAbas()
 
 
 
+    }
+
+    private fun inicializarNavegacaoAbas() {
+
+        val tabLayout = binding.tabLayoutPrincipal
+        val viewPager = binding.viewPagerPrincipal
+
+        //Criar Adapter para permitir abrir as abas e visalizar os respectivos conteudos
+
+        val abas = listOf("CONVERSAS", "CONTATOS")
+
+        viewPager.adapter = ViewPagerAdapter(
+           abas,  supportFragmentManager, lifecycle
+        )
+
+        tabLayout.isTabIndicatorFullWidth = true
+        TabLayoutMediator(tabLayout, viewPager){aba, posicao -> // TabLayoutMediator juntao o tabLayout com o viewPager
+            aba.text = abas[posicao]
+
+        }.attach()
     }
 
     fun inicializarToolbar(){
