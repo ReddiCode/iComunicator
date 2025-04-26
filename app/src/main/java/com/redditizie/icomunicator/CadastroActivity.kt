@@ -91,7 +91,7 @@ class CadastroActivity : AppCompatActivity() {
     private fun salvaUsuarioFirestore(usuario: Usuario) {
 
         firestore
-            .collection("Usuarios")
+            .collection("usuarios")
             .document( usuario.id)
             .set( usuario )
             .addOnSuccessListener {
