@@ -1,23 +1,19 @@
-package com.redditizie.icomunicator
+package com.redditizie.icomunicator.activities
 
 import android.Manifest
 import android.content.pm.PackageManager
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import androidx.activity.enableEdgeToEdge
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.firebase.firestore.SetOptions
 import com.google.firebase.storage.FirebaseStorage
-import com.redditizie.icomunicator.databinding.ActivityCadastroBinding
 import com.redditizie.icomunicator.databinding.ActivityPerfilBinding
 import com.redditizie.icomunicator.utilities.exibirMensagem
+import com.squareup.picasso.Picasso
 
 class PerfilActivity : AppCompatActivity() {
 
@@ -27,6 +23,7 @@ class PerfilActivity : AppCompatActivity() {
 
     private var temPermissaoCamera = false
     private var temPermissaoGaleria = false
+
 
     private val firebaseAuth by lazy {
         FirebaseAuth.getInstance()
@@ -69,6 +66,44 @@ class PerfilActivity : AppCompatActivity() {
         inicializarToolbar()
         solicitarPermissoes()
         inicializarEventosCLique()
+    }
+
+    //Metodo onStart usado para recuperar dados
+    override fun onStart() {
+        super.onStart()
+
+        recuperarDadosIniciaisUsuarios() // sempre carregar a foto e o nome configurados
+    }
+
+    private fun recuperarDadosIniciaisUsuarios() {
+        val idUsuario = firebaseAuth.currentUser?.uid
+        if (idUsuario != null) {
+            firestore
+                .collection("usuarios")
+                .document(idUsuario)
+                .get()
+                .addOnSuccessListener { documentSnapshot ->
+                    val dadosUsuarios = documentSnapshot.data
+                    if (dadosUsuarios != null) {
+                        val nome = dadosUsuarios["nome"] as? String
+                        val foto = dadosUsuarios["foto"] as? String
+
+                        if (!nome.isNullOrEmpty()) {
+                            binding.editNomePerfil.setText(nome)
+                        }
+
+                        if (!foto.isNullOrBlank()) {
+                            try {
+                                Picasso.get()
+                                    .load(foto)
+                                    .into(binding.imagePerfil)
+                            } catch (e: IllegalArgumentException) {
+                                e.printStackTrace()
+                            }
+                        }
+                    }
+                }
+        }
     }
 
     private fun uploadImagemStorage(uri: Uri) {
