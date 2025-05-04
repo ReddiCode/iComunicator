@@ -1,15 +1,11 @@
-package com.redditizie.icomunicator
+package com.redditizie.icomunicator.activities
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException
 import com.google.firebase.auth.FirebaseAuthInvalidUserException
-import com.google.firebase.auth.FirebaseAuthWeakPasswordException
 import com.redditizie.icomunicator.databinding.ActivityLoginBinding
 import com.redditizie.icomunicator.utilities.exibirMensagem
 

@@ -1,4 +1,4 @@
-package com.redditizie.icomunicator
+package com.redditizie.icomunicator.activities
 
 import android.content.Intent
 import android.os.Bundle
