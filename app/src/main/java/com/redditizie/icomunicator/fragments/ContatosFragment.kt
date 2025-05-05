@@ -1,5 +1,6 @@
 package com.redditizie.icomunicator.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -12,9 +13,11 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ListenerRegistration
 import com.redditizie.icomunicator.R
+import com.redditizie.icomunicator.activities.MensagensActivity
 import com.redditizie.icomunicator.adapters.ContatosAdapter
 import com.redditizie.icomunicator.databinding.FragmentContatosBinding
 import com.redditizie.icomunicator.model.Usuario
+import com.redditizie.icomunicator.utilities.Constantes
 
 
 class ContatosFragment : Fragment() {
@@ -43,7 +46,12 @@ class ContatosFragment : Fragment() {
             inflater, container, false
         )
 
-        contatosAdapter = ContatosAdapter()
+        contatosAdapter = ContatosAdapter{ usuario ->
+            val intent = Intent( context, MensagensActivity::class.java)
+            intent.putExtra("dadosDestinatario", usuario)
+            intent.putExtra("origem", Constantes.ORIGEM_CONTATO)
+            startActivity(intent)
+        }
         binding.rvContatos.adapter = contatosAdapter
         binding.rvContatos.layoutManager = LinearLayoutManager( context )
         binding.rvContatos.addItemDecoration(// colocar linha divisoria

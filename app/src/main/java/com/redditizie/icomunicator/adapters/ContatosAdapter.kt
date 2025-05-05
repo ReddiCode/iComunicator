@@ -8,7 +8,7 @@ import com.redditizie.icomunicator.databinding.ItemContatosBinding
 import com.redditizie.icomunicator.model.Usuario
 import com.squareup.picasso.Picasso
 
-class ContatosAdapter : Adapter<ContatosAdapter.ContatosViewHolder>() {
+class ContatosAdapter( private val onClick: (Usuario) -> Unit ) : Adapter<ContatosAdapter.ContatosViewHolder>() {
 
     private var listaContatos = emptyList<Usuario>()
 
@@ -26,6 +26,12 @@ class ContatosAdapter : Adapter<ContatosAdapter.ContatosViewHolder>() {
             Picasso.get()
                 .load(usuario.foto)
                 .into(binding.imageContatoFoto)
+
+            //Evento de click
+
+            binding.clItemContato.setOnClickListener {
+                onClick( usuario )
+            }
         }
 
     }
