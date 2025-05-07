@@ -6,9 +6,9 @@
         android:name="android.hardware.camera"
         android:required="true" />
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES" />
 
     <application
         android:allowBackup="true"
@@ -21,9 +21,13 @@
         android:theme="@style/Theme.IComunicator"
         tools:targetApi="31">
         <activity
+            android:name=".activities.MensagensActivity"
+            android:exported="false"
+            android:parentActivityName=".activities.MainActivity" />
+        <activity
             android:name=".activities.PerfilActivity"
-            android:parentActivityName=".activities.MainActivity"
-            android:exported="false" />
+            android:exported="false"
+            android:parentActivityName=".activities.MainActivity" />
         <activity
             android:name=".activities.CadastroActivity"
             android:exported="false"
